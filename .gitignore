@@ -1,1 +1,3 @@
 /.lake
+/build/risc0_ir
+/build/_build
