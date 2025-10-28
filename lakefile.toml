@@ -1,0 +1,6 @@
+name = "lean-init"
+version = "0.1.0"
+defaultTargets = ["Init"]
+
+[[lean_lib]]
+name = "Init"
