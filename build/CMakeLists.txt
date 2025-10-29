@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.18)
+project(lean-risc0-init C)
+set(LEAN_RISC0_PATH "$ENV{LEAN_RISC0_PATH}" CACHE STRING "Lean RISC0 runtime path")
+
+file(GLOB_RECURSE SRC_C CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/risc0_ir/*.c")
+
+add_library(Init STATIC ${SRC_C})
+
+target_include_directories(Init PUBLIC
+  $<BUILD_INTERFACE:${LEAN_RISC0_PATH}/include>
+)
+
+set(CMAKE_C_FLAGS "-ffunction-sections -fdata-sections -fPIC -march=rv32im -mabi=ilp32 -O3 -ffreestanding -fno-builtin")
